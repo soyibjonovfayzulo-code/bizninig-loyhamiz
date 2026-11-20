@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">TRUTT Tarjimon</string>
+    <string name="title_activity_main">TRUTT Tarjimon</string>
+    <string name="package_name">uz.trutt.tarjimon</string>
+    <string name="custom_url_scheme">uz.trutt.tarjimon</string>
+</resources>

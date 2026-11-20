@@ -1,0 +1,3454 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#FF602D" />
+  <title>TRUTT — TARJIMON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  /* Core Brand Palette */
+  --orange-primary: #FF602D;
+  --orange-deep: #E94D23;
+  --orange-bright: #FF7647;
+  --orange-soft: #FFF5F0;
+  --orange-soft-hover: #FFECE2;
+  --orange-border: rgba(255, 96, 45, 0.35);
+
+  /* Neutrals */
+  --white: #FFFFFF;
+  --surface-warm: #FFFDFC;
+  --surface-muted: #F7F5F4;
+  --text-dark: #171717;
+  --text-secondary: #777777;
+  --text-tertiary: #9E9E9E;
+  --border-subtle: #EAE6E4;
+
+  /* Semantic */
+  --success: #16A34A;
+  --success-soft: #ECFDF3;
+  --error: #DC2626;
+  --error-soft: #FEF2F2;
+  --info-soft: #FFF7ED;
+
+  /* Elevation */
+  --shadow-cta: 0 14px 32px rgba(154, 38, 6, 0.24), 0 4px 10px rgba(154, 38, 6, 0.14);
+  --shadow-sheet: 0 -16px 48px rgba(23, 12, 8, 0.22);
+  --shadow-card: 0 6px 20px rgba(23, 23, 23, 0.06);
+  --shadow-orange-btn: 0 10px 24px rgba(255, 96, 45, 0.32);
+
+  /* Radii */
+  --radius-sheet: 32px;
+  --radius-card: 20px;
+  --radius-input: 16px;
+  --radius-pill: 999px;
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', sans-serif;
+
+  /* Motion */
+  --ease-spring: cubic-bezier(0.22, 1.08, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Android Safe Areas */
+  --safe-top: max(env(safe-area-inset-top, 0px), 16px);
+  --safe-bottom: max(env(safe-area-inset-bottom, 0px), 16px);
+}
+
+
+@keyframes splashLogoIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.76) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes splashWordIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatSlowA {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -7px, 0); }
+}
+
+@keyframes floatSlowB {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, 7px, 0); }
+}
+
+@keyframes floatSlowC {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(4px, -6px, 0); }
+}
+
+@keyframes pulseAmbient {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.06); }
+}
+
+@keyframes spinLoader {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes screenEnter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes toastIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 16px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-sans);
+  background: #111114;
+  color: var(--text-dark);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Responsive Android App Viewport Container */
+.android-stage {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 0%, #241916 0%, #111114 68%);
+}
+
+.app-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 420px;
+  max-height: 880px;
+  background: var(--orange-primary);
+  overflow: hidden;
+  border-radius: 32px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  isolation: isolate;
+}
+
+@media (max-width: 520px), (max-height: 700px) {
+  .android-stage {
+    background: var(--orange-primary);
+  }
+  .app-shell {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* Common Screen Layering */
+.screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 360ms var(--ease-out-expo), visibility 360ms;
+  will-change: opacity, transform;
+}
+
+.screen.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* =========================================================
+   1. SPLASH SCREEN
+   ========================================================= */
+.screen-splash {
+  background: linear-gradient(162deg, #FF6E3B 0%, var(--orange-primary) 48%, var(--orange-deep) 100%);
+  align-items: center;
+  justify-content: center;
+  padding: var(--safe-top) 28px var(--safe-bottom);
+  z-index: 40;
+}
+
+.splash-glow {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  animation: pulseAmbient 4s ease-in-out infinite;
+}
+
+.splash-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.brand-mark {
+  width: 78px;
+  height: 78px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 30px rgba(173, 44, 10, 0.25);
+}
+
+.screen-splash .brand-mark {
+  opacity: 0;
+  animation: splashLogoIn 560ms var(--ease-spring) 120ms forwards;
+}
+
+.splash-wordmark {
+  margin: 22px 0 0;
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--white);
+  opacity: 0;
+  animation: splashWordIn 560ms var(--ease-out-expo) 360ms forwards;
+}
+
+.splash-sub {
+  margin: 10px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  opacity: 0;
+  animation: splashFadeIn 480ms var(--ease-out-expo) 620ms forwards;
+}
+
+.splash-tagline {
+  margin: 18px 0 0;
+  max-width: 250px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.84);
+  opacity: 0;
+  animation: splashFadeIn 500ms var(--ease-out-expo) 820ms forwards;
+}
+
+.splash-progress {
+  position: absolute;
+  bottom: calc(var(--safe-bottom) + 28px);
+  width: 48px;
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.splash-progress-bar {
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  border-radius: 99px;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 1.6s linear;
+}
+
+.screen-splash.is-loading .splash-progress-bar {
+  transform: scaleX(1);
+}
+
+/* =========================================================
+   2. WELCOME SCREEN (HERO + FLOATING LANG BADGES + CTA)
+   ========================================================= */
+.screen-welcome {
+  background:
+    radial-gradient(120% 60% at 50% 18%, rgba(255, 148, 102, 0.45) 0%, rgba(255, 96, 45, 0) 62%),
+    radial-gradient(90% 50% at 85% 88%, rgba(204, 52, 14, 0.55) 0%, rgba(233, 77, 35, 0) 65%),
+    linear-gradient(168deg, #FF6A38 0%, var(--orange-primary) 52%, var(--orange-deep) 100%);
+  z-index: 10;
+  justify-content: space-between;
+  padding: var(--safe-top) 22px calc(var(--safe-bottom) + 14px);
+}
+
+.welcome-deco-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.welcome-deco-ring--outer {
+  width: 460px;
+  height: 460px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -56%);
+}
+
+.welcome-deco-ring--inner {
+  width: 310px;
+  height: 310px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -56%);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.welcome-topbar {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  transition: opacity 320ms var(--ease-smooth);
+}
+
+.welcome-region-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 12px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+
+.welcome-guide-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 13px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: transform 160ms var(--ease-smooth), background 160ms;
+}
+
+.welcome-guide-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.26);
+}
+
+/* Welcome Center Hero — smoothly lifts when Bottom Sheet opens */
+.welcome-hero-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 500ms var(--ease-spring), opacity 400ms var(--ease-smooth);
+  will-change: transform;
+}
+
+.screen-welcome.sheet-open .welcome-hero-stage {
+  transform: translate3d(0, -18vh, 0) scale(0.84);
+}
+
+.screen-welcome.sheet-open .welcome-topbar {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.screen-welcome.sheet-open .welcome-footer {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  pointer-events: none;
+}
+
+.screen-welcome.sheet-open .floating-badges {
+  opacity: 0.28;
+}
+
+/* Floating Language Pills */
+.floating-badges {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 380ms var(--ease-smooth);
+}
+
+.lang-float-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 13px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(171, 41, 6, 0.14);
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.lang-float-chip--uz {
+  top: 10%;
+  left: 2%;
+  animation: floatSlowA 4.6s ease-in-out infinite;
+}
+
+.lang-float-chip--en {
+  top: 13%;
+  right: 2%;
+  animation: floatSlowB 5.1s ease-in-out 0.4s infinite;
+}
+
+.lang-float-chip--ru {
+  bottom: 16%;
+  left: 1%;
+  animation: floatSlowC 5.4s ease-in-out 0.8s infinite;
+}
+
+.lang-float-chip--tr {
+  bottom: 14%;
+  right: 2%;
+  animation: floatSlowA 4.9s ease-in-out 1.1s infinite;
+}
+
+.lang-float-chip--de {
+  top: 3%;
+  left: 50%;
+  margin-left: -48px;
+  animation: floatSlowB 5.6s ease-in-out 0.2s infinite;
+}
+
+.welcome-brand-core {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 12px;
+}
+
+.welcome-wordmark {
+  margin: 18px 0 0;
+  font-size: clamp(44px, 12vw, 54px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: var(--white);
+  text-shadow: 0 6px 24px rgba(173, 42, 8, 0.24);
+}
+
+.welcome-sub {
+  margin: 9px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.welcome-desc {
+  margin: 14px 0 0;
+  max-width: 270px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.welcome-live-pair {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(23, 23, 23, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FFF0B8;
+  box-shadow: 0 0 10px rgba(255, 240, 184, 0.9);
+}
+
+/* Bottom Capsule CTA ("Boshlash" + Dark Circle Arrow) */
+.welcome-footer {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 280ms var(--ease-smooth), transform 320ms var(--ease-smooth);
+}
+
+.start-capsule-btn {
+  width: 100%;
+  height: 62px;
+  padding: 8px 8px 8px 26px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: var(--shadow-cta);
+  transition: transform 200ms var(--ease-spring), box-shadow 200ms var(--ease-smooth);
+}
+
+.start-capsule-btn:active,
+.start-capsule-btn.is-pressed {
+  transform: scale(0.965);
+  box-shadow: 0 8px 20px rgba(154, 38, 6, 0.2);
+}
+
+.start-capsule-label {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-dark);
+}
+
+.start-capsule-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--text-dark);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 240ms var(--ease-spring), background 200ms;
+}
+
+.start-capsule-btn:hover .start-capsule-circle,
+.start-capsule-btn.is-pressed .start-capsule-circle {
+  transform: translateX(3px);
+  background: #272727;
+}
+
+.welcome-hint {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+  text-align: center;
+}
+
+/* =========================================================
+   3. ANIMATED BOTTOM SHEET (INSIDE WELCOME SCREEN)
+   ========================================================= */
+.sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  background: rgba(18, 10, 6, 0.34);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 420ms var(--ease-smooth);
+}
+
+.sheet-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bottom-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  width: 100%;
+  max-height: 82%;
+  background: var(--surface-warm);
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  box-shadow: var(--shadow-sheet);
+  transform: translate3d(0, 100%, 0);
+  opacity: 0.96;
+  transition: transform 500ms var(--ease-spring), opacity 300ms var(--ease-smooth);
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.bottom-sheet.is-open {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bottom-sheet.is-dragging {
+  transition: none;
+}
+
+.sheet-drag-zone {
+  padding: 12px 0 6px;
+  display: flex;
+  justify-content: center;
+  cursor: grab;
+  touch-action: none;
+}
+
+.sheet-handle {
+  width: 42px;
+  height: 4.5px;
+  border-radius: 99px;
+  background: #E0DAD6;
+}
+
+.sheet-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px 22px calc(var(--safe-bottom) + 16px);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Staggered fade-up inside Bottom Sheet */
+.sheet-stagger {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition: opacity 380ms var(--ease-out-expo), transform 420ms var(--ease-out-expo);
+}
+
+.bottom-sheet.is-open .sheet-stagger {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.bottom-sheet.is-open .sheet-stagger[data-step="1"] { transition-delay: 90ms; }
+.bottom-sheet.is-open .sheet-stagger[data-step="2"] { transition-delay: 150ms; }
+.bottom-sheet.is-open .sheet-stagger[data-step="3"] { transition-delay: 210ms; }
+.bottom-sheet.is-open .sheet-stagger[data-step="4"] { transition-delay: 260ms; }
+.bottom-sheet.is-open .sheet-stagger[data-step="5"] { transition-delay: 310ms; }
+
+.sheet-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sheet-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+}
+
+.sheet-subtitle {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  line-height: 1.48;
+  color: var(--text-secondary);
+}
+
+.sheet-close-btn {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-muted);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-smooth), background 160ms;
+}
+
+.sheet-close-btn:active {
+  transform: scale(0.92);
+  background: #ECE7E4;
+}
+
+/* Language Selector Cards */
+.lang-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.lang-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 76px;
+  padding: 12px 8px;
+  border-radius: 18px;
+  border: 1.5px solid var(--border-subtle);
+  background: var(--white);
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: border-color 220ms var(--ease-smooth), background 220ms var(--ease-smooth), transform 180ms var(--ease-spring), box-shadow 220ms;
+}
+
+.lang-card:active {
+  transform: scale(0.96);
+}
+
+.lang-card.is-selected {
+  background: var(--orange-soft);
+  border-color: var(--orange-primary);
+  box-shadow: 0 6px 16px rgba(255, 96, 45, 0.14);
+}
+
+.lang-card-flag {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.lang-card-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.lang-card-check {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--orange-primary);
+  color: var(--white);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-card.is-selected .lang-card-check {
+  display: flex;
+  animation: checkPop 260ms var(--ease-spring) forwards;
+}
+
+/* Phone / Email Input */
+.field-block {
+  margin-top: 20px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.text-input {
+  width: 100%;
+  height: 54px;
+  padding: 0 44px 0 16px;
+  border-radius: var(--radius-input);
+  border: 1.5px solid var(--border-subtle);
+  background: var(--surface-muted);
+  color: var(--text-dark);
+  font-size: 15.5px;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 200ms, background 200ms, box-shadow 200ms;
+}
+
+.text-input::placeholder {
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.text-input:focus {
+  background: var(--white);
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 4px rgba(255, 96, 45, 0.14);
+}
+
+.text-input.is-error {
+  border-color: var(--error);
+  background: var(--error-soft);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.input-type-badge {
+  position: absolute;
+  right: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: rgba(255, 96, 45, 0.12);
+  color: var(--orange-deep);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms;
+}
+
+.input-type-badge.is-visible {
+  opacity: 1;
+}
+
+.field-error {
+  margin: 7px 0 0;
+  min-height: 18px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--error);
+  display: none;
+}
+
+.field-error.is-visible {
+  display: block;
+}
+
+/* Primary Orange Button */
+.btn-primary-orange {
+  margin-top: 16px;
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-deep) 100%);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: var(--shadow-orange-btn);
+  transition: transform 180ms var(--ease-spring), filter 180ms, opacity 180ms;
+}
+
+.btn-primary-orange:active {
+  transform: scale(0.975);
+}
+
+.btn-primary-orange:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: var(--white);
+  animation: spinLoader 700ms linear infinite;
+}
+
+/* Demo Notice Box (Honest Auth Disclosure) */
+.demo-auth-box {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--orange-soft);
+  border: 1px solid var(--orange-border);
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  animation: screenEnter 260ms var(--ease-out-expo);
+}
+
+.demo-auth-box.is-visible {
+  display: flex;
+}
+
+.demo-auth-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--orange-deep);
+}
+
+.demo-auth-text {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-dark);
+}
+
+.demo-auth-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-demo-confirm {
+  flex: 1;
+  height: 42px;
+  border: none;
+  border-radius: 12px;
+  background: var(--text-dark);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-demo-cancel {
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Continue as Guest Button */
+.guest-btn {
+  margin-top: 14px;
+  width: 100%;
+  min-height: 46px;
+  border: none;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 180ms, color 180ms, transform 160ms;
+}
+
+.guest-btn:hover {
+  background: var(--surface-muted);
+  color: var(--text-dark);
+}
+
+.guest-btn:active {
+  transform: scale(0.98);
+}
+
+/* =========================================================
+   4. ONBOARDING SCREENS (3 SWIPEABLE SLIDES)
+   ========================================================= */
+.screen-onboarding {
+  background: var(--surface-warm);
+  z-index: 35;
+  padding: var(--safe-top) 22px calc(var(--safe-bottom) + 16px);
+  justify-content: space-between;
+}
+
+.onb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.onb-brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--orange-soft);
+  color: var(--orange-deep);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.onb-skip-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.onb-viewport {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  touch-action: pan-y;
+}
+
+.onb-track {
+  display: flex;
+  width: 100%;
+  transition: transform 420ms var(--ease-out-expo);
+  will-change: transform;
+}
+
+.onb-slide {
+  min-width: 100%;
+  padding: 12px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.onb-visual {
+  width: 100%;
+  max-width: 290px;
+  height: 220px;
+  border-radius: 28px;
+  background: linear-gradient(155deg, var(--orange-soft) 0%, #FFE4D6 100%);
+  border: 1px solid rgba(255, 96, 45, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.onb-title {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+}
+
+.onb-desc {
+  margin: 12px 0 0;
+  max-width: 300px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.onb-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.onb-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.onb-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  border: none;
+  padding: 0;
+  background: #E2DBD7;
+  cursor: pointer;
+  transition: width 260ms var(--ease-spring), background 260ms;
+}
+
+.onb-dot.is-active {
+  width: 26px;
+  background: var(--orange-primary);
+}
+
+.onb-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.onb-back-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-subtle);
+  background: var(--white);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 160ms, opacity 200ms;
+}
+
+.onb-back-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.onb-next-btn {
+  flex: 1;
+  margin-top: 0;
+}
+
+/* =========================================================
+   5. ROLE SELECTION SCREEN (TURIST vs TARJIMON)
+   ========================================================= */
+.screen-role {
+  background: var(--surface-warm);
+  z-index: 20;
+  padding: var(--safe-top) 22px calc(var(--safe-bottom) + 18px);
+  justify-content: space-between;
+}
+
+.screen-role.is-active .role-body {
+  animation: screenEnter 380ms var(--ease-out-expo);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+}
+
+.icon-circle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--white);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 160ms, background 160ms;
+}
+
+.icon-circle-btn:active {
+  transform: scale(0.92);
+  background: var(--surface-muted);
+}
+
+.session-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--orange-soft);
+  color: var(--orange-deep);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.role-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.role-heading {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  color: var(--text-dark);
+}
+
+.role-sub {
+  margin: -6px 0 6px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.role-card {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  border-radius: 24px;
+  border: 2px solid var(--border-subtle);
+  background: var(--white);
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: border-color 220ms, background 220ms, transform 200ms var(--ease-spring), box-shadow 220ms;
+}
+
+.role-card:active {
+  transform: scale(0.98);
+}
+
+.role-card.is-selected {
+  border-color: var(--orange-primary);
+  background: var(--orange-soft);
+  box-shadow: 0 12px 26px rgba(255, 96, 45, 0.16);
+}
+
+.role-icon-box {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: var(--surface-muted);
+  color: var(--orange-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 220ms, color 220ms, transform 240ms var(--ease-spring);
+}
+
+.role-card.is-selected .role-icon-box {
+  background: var(--orange-primary);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.role-card-content {
+  flex: 1;
+  padding-right: 24px;
+}
+
+.role-card-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.role-card-desc {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.role-radio {
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #D8D1CD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 200ms, background 200ms;
+}
+
+.role-card.is-selected .role-radio {
+  border-color: var(--orange-primary);
+  background: var(--orange-primary);
+  color: var(--white);
+}
+
+/* =========================================================
+   6. TOURIST HOME SCREEN
+   ========================================================= */
+.screen-tourist,
+.screen-translator {
+  background: #FAF8F7;
+  z-index: 22;
+}
+
+.home-header {
+  padding: var(--safe-top) 20px 18px;
+  background: linear-gradient(155deg, var(--orange-primary) 0%, var(--orange-deep) 100%);
+  color: var(--white);
+  border-radius: 0 0 28px 28px;
+  box-shadow: 0 10px 26px rgba(233, 77, 35, 0.22);
+}
+
+.home-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.home-brand-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.home-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-chip-btn {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.home-greeting {
+  margin: 14px 0 12px;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 16px;
+  background: var(--white);
+  color: var(--text-dark);
+  box-shadow: 0 6px 18px rgba(154, 38, 6, 0.16);
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: transparent;
+}
+
+.home-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 18px calc(var(--safe-bottom) + 24px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.filter-row::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-pill {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border-subtle);
+  background: var(--white);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 180ms;
+}
+
+.filter-pill.is-active {
+  background: var(--orange-primary);
+  border-color: var(--orange-primary);
+  color: var(--white);
+}
+
+.section-caption {
+  margin: 14px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.translator-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.translator-card {
+  padding: 16px;
+  border-radius: 22px;
+  background: var(--white);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.translator-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.translator-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--orange-soft), #FFD8C4);
+  color: var(--orange-deep);
+  font-size: 18px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.translator-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.translator-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.translator-name {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.verified-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--orange-primary);
+  color: var(--white);
+  font-size: 10px;
+}
+
+.translator-city {
+  margin: 3px 0 0;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.translator-rating {
+  padding: 5px 9px;
+  border-radius: 10px;
+  background: #FFF8EB;
+  color: #B45309;
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.translator-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mini-tag {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: var(--surface-muted);
+  color: var(--text-dark);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.translator-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #F1EDEB;
+}
+
+.translator-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.translator-price span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.btn-book-sm {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--text-dark);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms, background 160ms;
+}
+
+.btn-book-sm:active {
+  transform: scale(0.95);
+  background: var(--orange-primary);
+}
+
+/* =========================================================
+   7. TRANSLATOR PROFILE SETUP SCREEN
+   ========================================================= */
+.setup-card {
+  background: var(--white);
+  border-radius: 22px;
+  border: 1px solid var(--border-subtle);
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-card);
+}
+
+.setup-card-title {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.chip-select-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.select-chip {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border-subtle);
+  background: var(--white);
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms;
+}
+
+.select-chip.is-selected {
+  background: var(--orange-soft);
+  border-color: var(--orange-primary);
+  color: var(--orange-deep);
+}
+
+.verify-slot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1.5px dashed var(--orange-border);
+  background: var(--orange-soft);
+}
+
+.verify-slot-text {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-dark);
+}
+
+/* =========================================================
+   8. IN-APP MODAL & TOAST (NO NATIVE ALERT)
+   ========================================================= */
+.app-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  background: rgba(18, 10, 6, 0.48);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+}
+
+.app-modal-backdrop.is-open {
+  display: flex;
+}
+
+.app-modal {
+  width: 100%;
+  max-width: 340px;
+  background: var(--white);
+  border-radius: 26px;
+  padding: 22px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  animation: screenEnter 260ms var(--ease-spring);
+}
+
+.app-modal h3 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.app-modal p {
+  margin: 8px 0 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.app-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.app-toast {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--safe-bottom) + 18px);
+  transform: translateX(-50%);
+  z-index: 70;
+  max-width: calc(100% - 36px);
+  padding: 11px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--text-dark);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  display: none;
+  white-space: nowrap;
+}
+
+.app-toast.is-visible {
+  display: block;
+  animation: toastIn 260ms var(--ease-spring) forwards;
+}
+
+  </style>
+</head>
+<body>
+  <div class="android-stage">
+    <main class="app-shell" id="appShell">
+
+      <!-- =====================================================
+           1. SPLASH SCREEN
+           ===================================================== -->
+      <section class="screen screen-splash is-active" data-screen="splash" aria-label="Splash Screen">
+        <div class="splash-glow" aria-hidden="true"></div>
+        <div class="splash-center">
+          <div class="brand-mark" aria-hidden="true">
+            <!-- Original TRUTT Translation Emblem SVG -->
+            <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="8" width="22" height="20" rx="7" fill="#FFFFFF" fill-opacity="0.96"/>
+              <path d="M12.5 23L17 12.5L21.5 23M14.2 19.4H19.8" stroke="#FF602D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="20" y="20" width="22" height="20" rx="7" fill="#171717" fill-opacity="0.22" stroke="#FFFFFF" stroke-width="2"/>
+              <path d="M26 27.5H36M31 25V27.5C31 31.2 28.8 33.8 26 35M28.6 30.8C29.8 32.5 31.8 34 34.8 35" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h1 class="splash-wordmark" data-brand-name>TRUTT</h1>
+          <p class="splash-sub" data-brand-tag>TARJIMON</p>
+          <p class="splash-tagline" data-i18n="splashTagline">Sayohatingiz uchun ishonchli tarjimon</p>
+        </div>
+        <div class="splash-progress" aria-hidden="true">
+          <div class="splash-progress-bar"></div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           2. WELCOME SCREEN + INLINE ANIMATED BOTTOM SHEET
+           ===================================================== -->
+      <section class="screen screen-welcome" data-screen="welcome" aria-label="Welcome Screen">
+        <div class="welcome-deco-ring welcome-deco-ring--outer" aria-hidden="true"></div>
+        <div class="welcome-deco-ring welcome-deco-ring--inner" aria-hidden="true"></div>
+
+        <header class="welcome-topbar">
+          <div class="welcome-region-pill">
+            <span>🇺🇿</span>
+            <span data-i18n="welcomeRegion">O‘zbekiston</span>
+          </div>
+          <button type="button" class="welcome-guide-btn" id="welcomeGuideBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
+            </svg>
+            <span data-i18n="welcomeGuideBtn">Tanishtiruv</span>
+          </button>
+        </header>
+
+        <div class="welcome-hero-stage">
+          <!-- Floating Translucent Language Pills -->
+          <div class="floating-badges" aria-hidden="true">
+            <div class="lang-float-chip lang-float-chip--uz">🇺🇿 O‘zbekcha</div>
+            <div class="lang-float-chip lang-float-chip--de">🇩🇪 Deutsch</div>
+            <div class="lang-float-chip lang-float-chip--en">🇬🇧 English</div>
+            <div class="lang-float-chip lang-float-chip--ru">🇷🇺 Русский</div>
+            <div class="lang-float-chip lang-float-chip--tr">🇹🇷 Türkçe</div>
+          </div>
+
+          <div class="welcome-brand-core">
+            <div class="brand-mark" aria-hidden="true">
+              <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="8" width="22" height="20" rx="7" fill="#FFFFFF" fill-opacity="0.96"/>
+                <path d="M12.5 23L17 12.5L21.5 23M14.2 19.4H19.8" stroke="#FF602D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="20" y="20" width="22" height="20" rx="7" fill="#171717" fill-opacity="0.22" stroke="#FFFFFF" stroke-width="2"/>
+                <path d="M26 27.5H36M31 25V27.5C31 31.2 28.8 33.8 26 35M28.6 30.8C29.8 32.5 31.8 34 34.8 35" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h1 class="welcome-wordmark" data-brand-name>TRUTT</h1>
+            <p class="welcome-sub" data-brand-tag>TARJIMON</p>
+            <p class="welcome-desc" data-i18n="welcomeDesc">O‘zbekistondagi tarjimonlarni oson toping</p>
+            <div class="welcome-live-pair">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span id="welcomeLivePairText">O‘zbek ↔ English • Mahalliy tarjimon</span>
+            </div>
+          </div>
+        </div>
+
+        <footer class="welcome-footer">
+          <button type="button" class="start-capsule-btn" id="startCapsuleBtn">
+            <span class="start-capsule-label" data-i18n="welcomeStart">Boshlash</span>
+            <span class="start-capsule-circle" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+              </svg>
+            </span>
+          </button>
+          <p class="welcome-hint" data-i18n="welcomeHint">Kirish uchun bosing yoki mehmon sifatida ko‘ring</p>
+        </footer>
+
+        <!-- Animated Bottom Sheet (Overlays Welcome Screen without replacing it) -->
+        <div class="sheet-backdrop" id="sheetBackdrop"></div>
+        <div class="bottom-sheet" id="loginSheet" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sheetTitleHeading">
+          <div class="sheet-drag-zone" id="sheetDragZone" aria-hidden="true">
+            <div class="sheet-handle"></div>
+          </div>
+
+          <div class="sheet-scroll">
+            <div class="sheet-header sheet-stagger" data-step="1">
+              <div>
+                <h2 class="sheet-title" id="sheetTitleHeading" data-i18n="sheetTitle">Xush kelibsiz! 👋</h2>
+                <p class="sheet-subtitle" data-i18n="sheetSubtitle">Davom etish uchun interfeys tilini tanlang va hisobingizga kiring.</p>
+              </div>
+              <button type="button" class="sheet-close-btn" id="sheetCloseBtn" aria-label="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+                  <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- 3 Language Selector Cards -->
+            <div class="lang-grid sheet-stagger" data-step="2" role="group" aria-label="Language">
+              <button type="button" class="lang-card is-selected" data-lang="uz" aria-pressed="true">
+                <span class="lang-card-check" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
+                <span class="lang-card-flag">🇺🇿</span>
+                <span class="lang-card-name">O‘zbek</span>
+              </button>
+              <button type="button" class="lang-card" data-lang="en" aria-pressed="false">
+                <span class="lang-card-check" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
+                <span class="lang-card-flag">🇬🇧</span>
+                <span class="lang-card-name">English</span>
+              </button>
+              <button type="button" class="lang-card" data-lang="ru" aria-pressed="false">
+                <span class="lang-card-check" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
+                <span class="lang-card-flag">🇷🇺</span>
+                <span class="lang-card-name">Русский</span>
+              </button>
+            </div>
+
+            <!-- Phone or Email Form -->
+            <form id="loginForm" novalidate>
+              <div class="field-block sheet-stagger" data-step="3">
+                <label class="field-label" for="contactInput" data-i18n="inputLabel">TELEFON RAQAM YOKI EMAIL</label>
+                <div class="input-wrap">
+                  <input
+                    id="contactInput"
+                    type="text"
+                    inputmode="email"
+                    autocomplete="username"
+                    class="text-input"
+                    data-i18n-placeholder="inputPlaceholder"
+                    placeholder="+998 90 123 45 67"
+                  />
+                  <span class="input-type-badge" id="inputTypeBadge"></span>
+                </div>
+                <p class="field-error" id="contactError" role="alert"></p>
+              </div>
+
+              <div class="sheet-stagger" data-step="4">
+                <button type="submit" class="btn-primary-orange" id="loginSubmitBtn" data-i18n="loginBtn">Kirish →</button>
+              </div>
+            </form>
+
+            <!-- Transparent Demo Mode Box (Shown instead of fake SMS OTP) -->
+            <div class="demo-auth-box" id="demoAuthBox" role="status">
+              <p class="demo-auth-title" data-i18n="demoTitle">Demo rejim faol</p>
+              <p class="demo-auth-text" data-i18n="demoText">Haqiqiy SMS OTP yoki email tasdiqlash serveri hali ulanmagan. Hozircha demo hisob orqali barcha ekranlarni sinab ko‘rishingiz mumkin.</p>
+              <div class="demo-auth-actions">
+                <button type="button" class="btn-demo-confirm" id="demoConfirmBtn" data-i18n="demoContinue">Demo rejimda davom etish</button>
+                <button type="button" class="btn-demo-cancel" id="demoCancelBtn" data-i18n="demoCancel">Bekor qilish</button>
+              </div>
+            </div>
+
+            <!-- Continue as Guest -->
+            <div class="sheet-stagger" data-step="5">
+              <button type="button" class="guest-btn" id="guestContinueBtn" data-i18n="guestBtn">Mehmon sifatida davom etish</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           3. ONBOARDING SCREENS (3 SWIPEABLE SLIDES)
+           ===================================================== -->
+      <section class="screen screen-onboarding" data-screen="onboarding" aria-label="Onboarding">
+        <header class="onb-header">
+          <div class="onb-brand-pill">
+            <span data-brand-name>TRUTT</span>
+            <span>•</span>
+            <span data-brand-tag>TARJIMON</span>
+          </div>
+          <button type="button" class="onb-skip-btn" id="onbSkipBtn" data-i18n="onbSkip">O‘tkazib yuborish</button>
+        </header>
+
+        <div class="onb-viewport" id="onbViewport">
+          <div class="onb-track" id="onbTrack">
+            <!-- Slide 1 -->
+            <div class="onb-slide">
+              <div class="onb-visual" aria-hidden="true">
+                <svg width="160" height="140" viewBox="0 0 180 150" fill="none">
+                  <circle cx="90" cy="75" r="56" fill="#FFFFFF" fill-opacity="0.72"/>
+                  <circle cx="90" cy="75" r="38" stroke="#FF602D" stroke-width="2.5" stroke-dasharray="6 6"/>
+                  <path d="M90 42C76.2 42 65 53.2 65 67C65 84.5 90 108 90 108C90 108 115 84.5 115 67C115 53.2 103.8 42 90 42Z" fill="#FF602D"/>
+                  <circle cx="90" cy="66" r="10" fill="#FFFFFF"/>
+                  <rect x="20" y="22" width="54" height="24" rx="12" fill="#FFFFFF"/>
+                  <text x="30" y="38" fill="#171717" font-size="11" font-weight="700">🇺🇿 UZ</text>
+                  <rect x="110" y="102" width="54" height="24" rx="12" fill="#171717"/>
+                  <text x="120" y="118" fill="#FFFFFF" font-size="11" font-weight="700">🇬🇧 EN</text>
+                </svg>
+              </div>
+              <h2 class="onb-title" id="onbTitle0">Tarjimonlarni toping</h2>
+              <p class="onb-desc" id="onbDesc0">Toshkent, Samarqand, Buxoro va Xiva bo‘ylab kerakli tildagi mahalliy tarjimonlarni bir necha soniyada toping.</p>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="onb-slide">
+              <div class="onb-visual" aria-hidden="true">
+                <svg width="210" height="150" viewBox="0 0 220 150" fill="none">
+                  <rect x="24" y="20" width="172" height="110" rx="22" fill="#FFFFFF"/>
+                  <circle cx="58" cy="56" r="18" fill="#FFF5F0" stroke="#FF602D" stroke-width="2.5"/>
+                  <text x="49" y="61" fill="#E94D23" font-size="13" font-weight="800">AZ</text>
+                  <rect x="86" y="42" width="84" height="11" rx="5.5" fill="#171717"/>
+                  <rect x="86" y="60" width="56" height="8" rx="4" fill="#D4CECA"/>
+                  <rect x="40" y="88" width="58" height="24" rx="12" fill="#FFF8EB"/>
+                  <text x="51" y="104" fill="#B45309" font-size="12" font-weight="800">★ 4.9</text>
+                  <rect x="108" y="88" width="72" height="24" rx="12" fill="#FF602D"/>
+                  <text x="122" y="104" fill="#FFFFFF" font-size="12" font-weight="700">$18 / h</text>
+                </svg>
+              </div>
+              <h2 class="onb-title" id="onbTitle1">Ishonchli mutaxassislar</h2>
+              <p class="onb-desc" id="onbDesc1">Har bir tarjimonning tajribasi, biladigan tillari, mijozlar reytingi va soatlik narxini oldindan ko‘ring.</p>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="onb-slide">
+              <div class="onb-visual" aria-hidden="true">
+                <svg width="200" height="150" viewBox="0 0 200 150" fill="none">
+                  <rect x="24" y="26" width="106" height="44" rx="18" fill="#FFFFFF"/>
+                  <rect x="40" y="43" width="70" height="9" rx="4.5" fill="#171717"/>
+                  <rect x="70" y="80" width="106" height="44" rx="18" fill="#FF602D"/>
+                  <rect x="88" y="97" width="66" height="9" rx="4.5" fill="#FFFFFF"/>
+                  <circle cx="152" cy="48" r="18" fill="#171717"/>
+                  <path d="M145 48L150 53L160 43" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h2 class="onb-title" id="onbTitle2">Oson bog‘laning</h2>
+              <p class="onb-desc" id="onbDesc2">Tarjimon bilan bevosita kelishib, sayohat yoki uchrashuv vaqtini qulay tarzda rejalashtiring.</p>
+            </div>
+          </div>
+        </div>
+
+        <footer class="onb-footer">
+          <div class="onb-dots" role="tablist" aria-label="Onboarding progress">
+            <button type="button" class="onb-dot is-active" aria-label="Slide 1"></button>
+            <button type="button" class="onb-dot" aria-label="Slide 2"></button>
+            <button type="button" class="onb-dot" aria-label="Slide 3"></button>
+          </div>
+          <div class="onb-controls">
+            <button type="button" class="onb-back-btn" id="onbBackBtn" aria-label="Back" disabled>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"/>
+              </svg>
+            </button>
+            <button type="button" class="btn-primary-orange onb-next-btn" id="onbNextBtn" data-i18n="onbNext">Keyingi →</button>
+          </div>
+        </footer>
+      </section>
+
+      <!-- =====================================================
+           4. ROLE SELECTION SCREEN
+           ===================================================== -->
+      <section class="screen screen-role" data-screen="role" aria-label="Role Selection">
+        <header class="nav-bar">
+          <button type="button" class="icon-circle-btn" id="roleBackBtn" aria-label="Back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+          <span class="session-pill" id="roleSessionBadge">Mehmon rejimi</span>
+        </header>
+
+        <div class="role-body">
+          <h2 class="role-heading" data-i18n="roleTitle">Siz TRUTT'dan qanday foydalanmoqchisiz?</h2>
+          <p class="role-sub" data-i18n="roleSub">Keyingi bosqich uchun o‘zingizga mos yo‘nalishni tanlang.</p>
+
+          <button type="button" class="role-card" data-role="tourist" aria-pressed="false">
+            <div class="role-icon-box" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div class="role-card-content">
+              <h3 class="role-card-title" data-i18n="roleTouristTitle">Men turistman 🌍</h3>
+              <p class="role-card-desc" data-i18n="roleTouristDesc">O‘zimga mos tarjimonni topmoqchiman.</p>
+            </div>
+            <span class="role-radio" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+          </button>
+
+          <button type="button" class="role-card" data-role="translator" aria-pressed="false">
+            <div class="role-icon-box" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/>
+              </svg>
+            </div>
+            <div class="role-card-content">
+              <h3 class="role-card-title" data-i18n="roleTranslatorTitle">Men tarjimonman 🗣️</h3>
+              <p class="role-card-desc" data-i18n="roleTranslatorDesc">Turistlarga tarjimonlik xizmatini ko‘rsatmoqchiman.</p>
+            </div>
+            <span class="role-radio" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+          </button>
+
+          <p class="field-error" id="roleError" role="alert"></p>
+        </div>
+
+        <button type="button" class="btn-primary-orange" id="roleContinueBtn" data-i18n="roleContinue">Davom etish →</button>
+      </section>
+
+      <!-- =====================================================
+           5. TOURIST HOME SCREEN
+           ===================================================== -->
+      <section class="screen screen-tourist" data-screen="tourist" aria-label="Tourist Home">
+        <header class="home-header">
+          <div class="home-header-row">
+            <h2 class="home-brand-title" data-brand-name>TRUTT</h2>
+            <div class="home-header-actions">
+              <button type="button" class="home-chip-btn" id="touristSwitchRoleBtn" data-i18n="touristRoleSwitch">Rolni almashtirish</button>
+              <button type="button" class="home-chip-btn" id="touristBackWelcomeBtn" aria-label="Welcome">↺</button>
+            </div>
+          </div>
+          <p class="home-greeting" data-i18n="touristGreeting">O‘zbekistondagi mahalliy tarjimonlar</p>
+          <div class="search-bar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#777777" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+            </svg>
+            <input type="search" id="touristSearchInput" data-i18n-placeholder="touristSearchPlaceholder" placeholder="Shahar, til yoki ism bo‘yicha qidiring..." />
+          </div>
+        </header>
+
+        <div class="home-scroll">
+          <div class="filter-row" id="cityFilterRow" role="tablist" aria-label="Cities"></div>
+          <div class="section-caption">
+            <span id="translatorCount">4 nafar tarjimon topildi</span>
+            <span>Demo</span>
+          </div>
+          <div class="translator-list" id="translatorList"></div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           6. TRANSLATOR PROFILE SETUP SCREEN
+           ===================================================== -->
+      <section class="screen screen-translator" data-screen="translator" aria-label="Translator Profile Setup">
+        <header class="home-header">
+          <div class="home-header-row">
+            <button type="button" class="home-chip-btn" id="translatorBackRoleBtn">←</button>
+            <h2 class="home-brand-title" data-i18n="translatorHeader">Tarjimon profili</h2>
+            <span class="home-chip-btn">Demo</span>
+          </div>
+          <p class="home-greeting" data-i18n="translatorGreeting">Mutaxassis sifatida ro‘yxatdan o‘ting</p>
+        </header>
+
+        <div class="home-scroll">
+          <form id="translatorSetupForm" novalidate>
+            <div class="setup-card">
+              <label class="field-label" for="trNameInput" data-i18n="trFullNameLabel">ISM VA FAMILIYA</label>
+              <input id="trNameInput" type="text" class="text-input" data-i18n-placeholder="trFullNamePlaceholder" placeholder="Masalan: Sardor Alimov" />
+
+              <div class="field-block">
+                <label class="field-label" for="trCitySelect" data-i18n="trCityLabel">SHAHAR</label>
+                <select id="trCitySelect" class="text-input">
+                  <option value="tashkent">Toshkent</option>
+                  <option value="samarkand">Samarqand</option>
+                  <option value="bukhara">Buxoro</option>
+                  <option value="khiva">Xiva</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="setup-card">
+              <p class="setup-card-title" data-i18n="trLangsLabel">BILADIGAN TILLARINGIZ</p>
+              <div class="chip-select-wrap">
+                <button type="button" class="select-chip is-selected" data-tr-lang="uz">🇺🇿 O‘zbekcha</button>
+                <button type="button" class="select-chip is-selected" data-tr-lang="en">🇬🇧 English</button>
+                <button type="button" class="select-chip" data-tr-lang="ru">🇷🇺 Русский</button>
+                <button type="button" class="select-chip" data-tr-lang="de">🇩🇪 Deutsch</button>
+                <button type="button" class="select-chip" data-tr-lang="tr">🇹🇷 Türkçe</button>
+                <button type="button" class="select-chip" data-tr-lang="fr">🇫🇷 Français</button>
+              </div>
+            </div>
+
+            <div class="setup-card">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div>
+                  <label class="field-label" for="trExpInput" data-i18n="trExpLabel">TAJRIBA (YIL)</label>
+                  <input id="trExpInput" type="number" min="0" max="40" value="3" class="text-input" />
+                </div>
+                <div>
+                  <label class="field-label" for="trRateInput" data-i18n="trRateLabel">SOATLIK NARX (USD)</label>
+                  <input id="trRateInput" type="number" min="5" max="200" value="18" class="text-input" />
+                </div>
+              </div>
+            </div>
+
+            <div class="setup-card">
+              <p class="setup-card-title" data-i18n="trVerifyTitle">Shaxsni tasdiqlash (KYC)</p>
+              <div class="verify-slot">
+                <span style="font-size:24px;" aria-hidden="true">🪪</span>
+                <p class="verify-slot-text" style="margin:0;" data-i18n="trVerifyDesc">Pasport yoki ID-karta orqali tekshiruv moduli backend ulanganda avtomatik faollashadi.</p>
+              </div>
+            </div>
+
+            <p class="field-error" id="trFormError" role="alert"></p>
+            <button type="submit" class="btn-primary-orange" data-i18n="trSaveBtn">Profilni saqlash (Demo) →</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           IN-APP MODAL & TOAST
+           ===================================================== -->
+      <div class="app-modal-backdrop" id="appModalBackdrop" role="dialog" aria-modal="true">
+        <div class="app-modal">
+          <h3 id="appModalTitle"></h3>
+          <p id="appModalText"></p>
+          <div class="app-modal-actions">
+            <button type="button" class="btn-primary-orange" id="appModalPrimary" style="margin-top:0;height:48px;"></button>
+            <button type="button" class="guest-btn" id="appModalSecondary" style="margin-top:0;"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-toast" id="appToast" role="status" aria-live="polite"></div>
+
+    </main>
+  </div>
+
+  <script>
+(function () {
+  "use strict";
+
+/**
+ * Markaziy brend konfiguratsiyasi.
+ * Ilova nomini keyinchalik oson almashtirish uchun faqat shu faylni tahrirlang.
+ */
+const APP_CONFIG = {
+  brandName: 'TRUTT',
+  brandTag: 'TARJIMON',
+  appId: 'uz.trutt.tarjimon',
+  defaultLang: 'uz',
+  demoMode: true,
+  splashDurationMs: 1750,
+  authEndpointConnected: false
+};
+
+const TRANSLATIONS = {
+  uz: {
+    brandTag: 'TARJIMON',
+    splashTagline: 'Sayohatingiz uchun ishonchli tarjimon',
+    welcomeRegion: 'O‘zbekiston',
+    welcomeGuideBtn: 'Tanishtiruv',
+    welcomeDesc: 'O‘zbekistondagi tarjimonlarni oson toping',
+    welcomeStart: 'Boshlash',
+    welcomeHint: 'Kirish uchun bosing yoki mehmon sifatida ko‘ring',
+    livePairs: [
+      'O‘zbek ↔ English • Mahalliy tarjimon',
+      'O‘zbek ↔ Русский • Jonli hamrohlik',
+      'O‘zbek ↔ Deutsch • Ekskursiya va biznes',
+      'O‘zbek ↔ Türkçe • Ishonchli mutaxassislar'
+    ],
+    sheetTitle: 'Xush kelibsiz! 👋',
+    sheetSubtitle: 'Davom etish uchun interfeys tilini tanlang va hisobingizga kiring.',
+    inputLabel: 'TELEFON RAQAM YOKI EMAIL',
+    inputPlaceholder: '+998 90 123 45 67',
+    badgePhone: 'Telefon',
+    badgeEmail: 'Email',
+    loginBtn: 'Kirish →',
+    loginLoading: 'Tekshirilmoqda...',
+    guestBtn: 'Mehmon sifatida davom etish',
+    errEmpty: 'Iltimos, telefon raqamingiz yoki email manzilingizni kiriting.',
+    errPhone: 'Xalqaro formatdagi to‘g‘ri telefon raqamini kiriting (masalan: +998 90 123 45 67).',
+    errEmail: 'To‘g‘ri email manzilini kiriting (masalan: tourist@mail.com).',
+    errInvalid: 'Telefon raqam (+998...) yoki to‘g‘ri email manzilini kiriting.',
+    demoTitle: 'Demo rejim faol',
+    demoText: 'Haqiqiy SMS OTP yoki email tasdiqlash serveri hali ulanmagan. Hozircha demo hisob orqali barcha ekranlarni sinab ko‘rishingiz mumkin.',
+    demoContinue: 'Demo rejimda davom etish',
+    demoCancel: 'Bekor qilish',
+    onbSkip: 'O‘tkazib yuborish',
+    onbNext: 'Keyingi →',
+    onbFinish: 'Boshlash →',
+    onbSlides: [
+      {
+        title: 'Tarjimonlarni toping',
+        desc: 'Toshkent, Samarqand, Buxoro va Xiva bo‘ylab kerakli tildagi mahalliy tarjimonlarni bir necha soniyada toping.'
+      },
+      {
+        title: 'Ishonchli mutaxassislar',
+        desc: 'Har bir tarjimonning tajribasi, biladigan tillari, mijozlar reytingi va soatlik narxini oldindan ko‘ring.'
+      },
+      {
+        title: 'Oson bog‘laning',
+        desc: 'Tarjimon bilan bevosita kelishib, sayohat yoki uchrashuv vaqtini qulay tarzda rejalashtiring.'
+      }
+    ],
+    roleTitle: 'Siz {BRAND}\'dan qanday foydalanmoqchisiz?',
+    roleSub: 'Keyingi bosqich uchun o‘zingizga mos yo‘nalishni tanlang.',
+    roleSessionGuest: 'Mehmon rejimi',
+    roleSessionDemo: 'Demo hisob',
+    roleTouristTitle: 'Men turistman 🌍',
+    roleTouristDesc: 'O‘zimga mos tarjimonni topmoqchiman.',
+    roleTranslatorTitle: 'Men tarjimonman 🗣️',
+    roleTranslatorDesc: 'Turistlarga tarjimonlik xizmatini ko‘rsatmoqchiman.',
+    roleContinue: 'Davom etish →',
+    roleSelectErr: 'Davom etish uchun foydalanuvchi turini tanlang.',
+    touristGreeting: 'O‘zbekistondagi mahalliy tarjimonlar',
+    touristSearchPlaceholder: 'Shahar, til yoki ism bo‘yicha qidiring...',
+    touristFoundCount: '{COUNT} nafar tarjimon topildi',
+    touristPerHour: '/ soat',
+    touristExp: '{Y} yil tajriba',
+    touristBookBtn: 'Buyurtma berish',
+    touristRoleSwitch: 'Rolni almashtirish',
+    touristEmpty: 'Tanlangan filtr bo‘yicha tarjimon topilmadi.',
+    guestModalTitle: 'Buyurtma uchun hisob kerak',
+    guestModalText: 'Siz mehmon sifatida ko‘rib chiqyapsiz. {NAME} bilan buyurtma rasmiylashtirish uchun hisobingizga kiring.',
+    guestModalLogin: 'Kirish oynasini ochish',
+    guestModalClose: 'Ko‘rishda davom etish',
+    bookModalTitle: 'Demo so‘rov yuborildi',
+    bookModalText: '{NAME} ({CITY}) uchun uchrashuv so‘rovi demo rejimda shakllantirildi. Haqiqiy buyurtma va to‘lov tizimi backend ulanganda ishga tushadi.',
+    bookModalOk: 'Tushunarli',
+    translatorHeader: 'Tarjimon profili',
+    translatorGreeting: 'Mutaxassis sifatida ro‘yxatdan o‘ting',
+    trFullNameLabel: 'ISM VA FAMILIYA',
+    trFullNamePlaceholder: 'Masalan: Sardor Alimov',
+    trCityLabel: 'SHAHAR',
+    trLangsLabel: 'BILADIGAN TILLARINGIZ',
+    trExpLabel: 'TAJRIBA (YIL)',
+    trRateLabel: 'SOATLIK NARX (USD)',
+    trVerifyTitle: 'Shaxsni tasdiqlash (KYC)',
+    trVerifyDesc: 'Pasport yoki ID-karta orqali tekshiruv moduli backend ulanganda avtomatik faollashadi.',
+    trSaveBtn: 'Profilni saqlash (Demo) →',
+    trValidationErr: 'Iltimos, ismingizni kiriting va kamida bitta tilni tanlang.',
+    trSavedToast: 'Tarjimon profili demo rejimda saqlandi!',
+    toastLangChanged: 'Interfeys tili o‘zgartirildi: O‘zbek'
+  },
+
+  en: {
+    brandTag: 'TRANSLATOR',
+    splashTagline: 'Trusted local translator for your trip',
+    welcomeRegion: 'Uzbekistan',
+    welcomeGuideBtn: 'Tour',
+    welcomeDesc: 'Find verified local translators across Uzbekistan',
+    welcomeStart: 'Get Started',
+    welcomeHint: 'Tap to sign in or browse as a guest',
+    livePairs: [
+      'Uzbek ↔ English • Local translator',
+      'Uzbek ↔ Russian • Live companion',
+      'Uzbek ↔ Deutsch • Tours & business',
+      'Uzbek ↔ Türkçe • Verified specialists'
+    ],
+    sheetTitle: 'Welcome! 👋',
+    sheetSubtitle: 'Choose your interface language and sign in to continue.',
+    inputLabel: 'PHONE NUMBER OR EMAIL',
+    inputPlaceholder: '+998 90 123 45 67',
+    badgePhone: 'Phone',
+    badgeEmail: 'Email',
+    loginBtn: 'Sign In →',
+    loginLoading: 'Checking...',
+    guestBtn: 'Continue as guest',
+    errEmpty: 'Please enter your phone number or email address.',
+    errPhone: 'Enter a valid international phone number (e.g. +998 90 123 45 67).',
+    errEmail: 'Enter a valid email address (e.g. tourist@mail.com).',
+    errInvalid: 'Please enter a valid international phone (+...) or email address.',
+    demoTitle: 'Demo Mode Active',
+    demoText: 'Real SMS OTP and email verification services are not connected yet. You can explore every screen using a transparent demo session.',
+    demoContinue: 'Continue in Demo Mode',
+    demoCancel: 'Cancel',
+    onbSkip: 'Skip',
+    onbNext: 'Next →',
+    onbFinish: 'Get Started →',
+    onbSlides: [
+      {
+        title: 'Find Local Translators',
+        desc: 'Search trusted local translators by language and city across Tashkent, Samarkand, Bukhara, and Khiva.'
+      },
+      {
+        title: 'Trusted Specialists',
+        desc: 'Compare translator profiles, years of experience, verified ratings, and transparent hourly pricing.'
+      },
+      {
+        title: 'Connect Effortlessly',
+        desc: 'Coordinate directly with your translator and agree on meeting times for tours or business trips.'
+      }
+    ],
+    roleTitle: 'How will you use {BRAND}?',
+    roleSub: 'Select the experience tailored to your journey.',
+    roleSessionGuest: 'Guest Mode',
+    roleSessionDemo: 'Demo Account',
+    roleTouristTitle: 'I am a tourist 🌍',
+    roleTouristDesc: 'I want to find the right local translator for my trip.',
+    roleTranslatorTitle: 'I am a translator 🗣️',
+    roleTranslatorDesc: 'I want to offer translation services to tourists.',
+    roleContinue: 'Continue →',
+    roleSelectErr: 'Please choose a role to continue.',
+    touristGreeting: 'Local translators in Uzbekistan',
+    touristSearchPlaceholder: 'Search by city, language, or name...',
+    touristFoundCount: '{COUNT} translators available',
+    touristPerHour: '/ hour',
+    touristExp: '{Y} yrs exp',
+    touristBookBtn: 'Request',
+    touristRoleSwitch: 'Switch Role',
+    touristEmpty: 'No translators match your current filter.',
+    guestModalTitle: 'Sign in required to book',
+    guestModalText: 'You are browsing as a guest. Please sign in to send a booking request to {NAME}.',
+    guestModalLogin: 'Open Sign In',
+    guestModalClose: 'Keep browsing',
+    bookModalTitle: 'Demo request prepared',
+    bookModalText: 'A demo booking request for {NAME} ({CITY}) has been created. Live booking and payments will activate once the backend is connected.',
+    bookModalOk: 'Got it',
+    translatorHeader: 'Translator Profile',
+    translatorGreeting: 'Create your specialist profile',
+    trFullNameLabel: 'FULL NAME',
+    trFullNamePlaceholder: 'e.g. Sardor Alimov',
+    trCityLabel: 'CITY',
+    trLangsLabel: 'LANGUAGES YOU SPEAK',
+    trExpLabel: 'EXPERIENCE (YEARS)',
+    trRateLabel: 'HOURLY RATE (USD)',
+    trVerifyTitle: 'Identity Verification (KYC)',
+    trVerifyDesc: 'Passport / ID verification structure is ready and will activate once connected to backend.',
+    trSaveBtn: 'Save Profile (Demo) →',
+    trValidationErr: 'Please enter your name and select at least one language.',
+    trSavedToast: 'Translator profile saved in demo mode!',
+    toastLangChanged: 'Language switched to English'
+  },
+
+  ru: {
+    brandTag: 'ПЕРЕВОДЧИК',
+    splashTagline: 'Надёжный переводчик для вашего путешествия',
+    welcomeRegion: 'Узбекистан',
+    welcomeGuideBtn: 'Обзор',
+    welcomeDesc: 'Легко находите местных переводчиков в Узбекистане',
+    welcomeStart: 'Начать',
+    welcomeHint: 'Нажмите для входа или продолжите как гость',
+    livePairs: [
+      'Узбекский ↔ English • Местный гид',
+      'Узбекский ↔ Русский • Живое общение',
+      'Узбекский ↔ Deutsch • Туры и бизнес',
+      'Узбекский ↔ Türkçe • Проверенные профи'
+    ],
+    sheetTitle: 'Добро пожаловать! 👋',
+    sheetSubtitle: 'Выберите язык интерфейса и войдите в аккаунт, чтобы продолжить.',
+    inputLabel: 'НОМЕР ТЕЛЕФОНА ИЛИ EMAIL',
+    inputPlaceholder: '+998 90 123 45 67',
+    badgePhone: 'Телефон',
+    badgeEmail: 'Email',
+    loginBtn: 'Войти →',
+    loginLoading: 'Проверка...',
+    guestBtn: 'Продолжить как гость',
+    errEmpty: 'Пожалуйста, введите номер телефона или email.',
+    errPhone: 'Введите корректный международный номер (например: +998 90 123 45 67).',
+    errEmail: 'Введите корректный адрес email (например: tourist@mail.com).',
+    errInvalid: 'Введите международный номер (+...) или корректный email.',
+    demoTitle: 'Активен демо-режим',
+    demoText: 'Сервер SMS OTP и подтверждения почты пока не подключён. Вы можете протестировать все экраны в открытом демо-режиме.',
+    demoContinue: 'Продолжить в демо-режиме',
+    demoCancel: 'Отмена',
+    onbSkip: 'Пропустить',
+    onbNext: 'Далее →',
+    onbFinish: 'Начать →',
+    onbSlides: [
+      {
+        title: 'Находите переводчиков',
+        desc: 'Ищите проверенных местных переводчиков по языку и городу в Ташкенте, Самарканде, Бухаре и Хиве.'
+      },
+      {
+        title: 'Надёжные специалисты',
+        desc: 'Изучайте профиль, опыт работы, рейтинг и прозрачную почасовую стоимость каждого переводчика.'
+      },
+      {
+        title: 'Удобная связь',
+        desc: 'Легко связывайтесь с переводчиком и заранее договаривайтесь о времени встречи.'
+      }
+    ],
+    roleTitle: 'Как вы планируете использовать {BRAND}?',
+    roleSub: 'Выберите подходящую роль для продолжения.',
+    roleSessionGuest: 'Гостевой режим',
+    roleSessionDemo: 'Демо-аккаунт',
+    roleTouristTitle: 'Я турист 🌍',
+    roleTouristDesc: 'Хочу найти подходящего переводчика для поездки.',
+    roleTranslatorTitle: 'Я переводчик 🗣️',
+    roleTranslatorDesc: 'Хочу оказывать услуги перевода туристам.',
+    roleContinue: 'Продолжить →',
+    roleSelectErr: 'Пожалуйста, выберите роль для продолжения.',
+    touristGreeting: 'Местные переводчики в Узбекистане',
+    touristSearchPlaceholder: 'Поиск по городу, языку или имени...',
+    touristFoundCount: 'Найдено переводчиков: {COUNT}',
+    touristPerHour: '/ час',
+    touristExp: 'Опыт {Y} лет',
+    touristBookBtn: 'Заказать',
+    touristRoleSwitch: 'Сменить роль',
+    touristEmpty: 'По выбранному фильтру переводчики не найдены.',
+    guestModalTitle: 'Для заказа нужен аккаунт',
+    guestModalText: 'Вы просматриваете приложение как гость. Войдите в аккаунт, чтобы отправить заявку специалисту {NAME}.',
+    guestModalLogin: 'Открыть вход',
+    guestModalClose: 'Продолжить просмотр',
+    bookModalTitle: 'Демо-заявка создана',
+    bookModalText: 'Демо-запрос для {NAME} ({CITY}) успешно сформирован. Реальное бронирование заработает после подключения бэкенда.',
+    bookModalOk: 'Понятно',
+    translatorHeader: 'Профиль переводчика',
+    translatorGreeting: 'Заполните анкету специалиста',
+    trFullNameLabel: 'ИМЯ И ФАМИЛИЯ',
+    trFullNamePlaceholder: 'Например: Сардор Алимов',
+    trCityLabel: 'ГОРОД',
+    trLangsLabel: 'ЯЗЫКИ, КОТОРЫМИ ВЛАДЕЕТЕ',
+    trExpLabel: 'ОПЫТ (ЛЕТ)',
+    trRateLabel: 'СТАВКА В ЧАС (USD)',
+    trVerifyTitle: 'Проверка личности (KYC)',
+    trVerifyDesc: 'Модуль проверки паспорта / ID готов и активируется после подключения бэкенда.',
+    trSaveBtn: 'Сохранить профиль (Демо) →',
+    trValidationErr: 'Укажите имя и выберите хотя бы один язык.',
+    trSavedToast: 'Профиль переводчика сохранён в демо-режиме!',
+    toastLangChanged: 'Язык интерфейса изменён: Русский'
+  }
+};
+
+const STORAGE_KEYS = {
+  lang: 'trutt_lang_v1',
+  onboardingDone: 'trutt_onboarding_done_v1',
+  sessionMode: 'trutt_session_mode_v1',
+  userContact: 'trutt_user_contact_v1',
+  userRole: 'trutt_user_role_v1'
+};
+const AppStorage = {
+  get(key, fallback = null) {
+    try {
+      const value = window.localStorage.getItem(STORAGE_KEYS[key] || key);
+      return value !== null ? value : fallback;
+    } catch {
+      return fallback;
+    }
+  },
+
+  set(key, value) {
+    try {
+      window.localStorage.setItem(STORAGE_KEYS[key] || key, String(value));
+    } catch {
+      // Sandbox yoki xususiy rejimda xatolikni yumshoq yutamiz
+    }
+  },
+
+  remove(key) {
+    try {
+      window.localStorage.removeItem(STORAGE_KEYS[key] || key);
+    } catch {
+      // ignore
+    }
+  }
+};
+
+/**
+ * Android Capacitor ko'prigi (Back tugmasi, StatusBar, Haptics, Keyboard).
+ * Oddiy brauzerda ham xatosiz ishlaydi.
+ */
+function initAndroidBridge(onBackPressed) {
+  // Capacitor App Back tugmasi
+  const cap = window.Capacitor;
+  if (cap && cap.Plugins && cap.Plugins.App) {
+    cap.Plugins.App.addListener('backButton', () => {
+      const handled = onBackPressed();
+      if (!handled && cap.Plugins.App.exitApp) {
+        cap.Plugins.App.exitApp();
+      }
+    });
+  }
+
+  // Brauzer / Android WebView history Back qo'llab-quvvatlashi
+  window.addEventListener('popstate', () => {
+    onBackPressed();
+  });
+
+  // Klaviatura ESC tugmasi (desktop test uchun)
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      onBackPressed();
+    }
+  });
+
+  // Android virtual klaviatura ochilganda input ko'rinib turishi uchun
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', () => {
+      const active = document.activeElement;
+      if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+        window.setTimeout(() => {
+          active.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 120);
+      }
+    });
+  }
+}
+function triggerHapticLight() {
+  try {
+    const cap = window.Capacitor;
+    if (cap && cap.Plugins && cap.Plugins.Haptics) {
+      cap.Plugins.Haptics.impact({ style: 'LIGHT' });
+    } else if (navigator.vibrate) {
+      navigator.vibrate(10);
+    }
+  } catch {
+    // ignore
+  }
+}
+
+const UZ_CITIES = [
+  { id: 'all', uz: 'Barchasi', en: 'All cities', ru: 'Все города' },
+  { id: 'tashkent', uz: 'Toshkent', en: 'Tashkent', ru: 'Ташкент' },
+  { id: 'samarkand', uz: 'Samarqand', en: 'Samarkand', ru: 'Самарканд' },
+  { id: 'bukhara', uz: 'Buxoro', en: 'Bukhara', ru: 'Бухара' },
+  { id: 'khiva', uz: 'Xiva', en: 'Khiva', ru: 'Хива' }
+];
+const DEMO_TRANSLATORS = [
+  {
+    id: 'tr-1',
+    initials: 'AZ',
+    name: 'Aziza Karimova',
+    cityId: 'samarkand',
+    cityLabel: { uz: 'Samarqand', en: 'Samarkand', ru: 'Самарканд' },
+    rating: '4.9',
+    reviews: 64,
+    experienceYears: 6,
+    pricePerHour: '$18',
+    languages: ['🇺🇿 O‘zbek', '🇬🇧 English', '🇷🇺 Русский'],
+    specialty: {
+      uz: 'Tarixiy ekskursiya va muzokaralar',
+      en: 'Historical tours & negotiations',
+      ru: 'Исторические туры и переговоры'
+    }
+  },
+  {
+    id: 'tr-2',
+    initials: 'JR',
+    name: 'Jasur Rahimov',
+    cityId: 'tashkent',
+    cityLabel: { uz: 'Toshkent', en: 'Tashkent', ru: 'Ташкент' },
+    rating: '4.8',
+    reviews: 49,
+    experienceYears: 5,
+    pricePerHour: '$20',
+    languages: ['🇺🇿 O‘zbek', '🇬🇧 English', '🇩🇪 Deutsch'],
+    specialty: {
+      uz: 'Biznes uchrashuvlar va aeroport kutib olish',
+      en: 'Business meetings & airport pickup',
+      ru: 'Деловые встречи и встреча в аэропорту'
+    }
+  },
+  {
+    id: 'tr-3',
+    initials: 'MS',
+    name: 'Madina Sobirova',
+    cityId: 'bukhara',
+    cityLabel: { uz: 'Buxoro', en: 'Bukhara', ru: 'Бухара' },
+    rating: '5.0',
+    reviews: 38,
+    experienceYears: 4,
+    pricePerHour: '$16',
+    languages: ['🇺🇿 O‘zbek', '🇹🇷 Türkçe', '🇬🇧 English'],
+    specialty: {
+      uz: 'Gastronomik va madaniy sayohatlar',
+      en: 'Culinary & cultural city walks',
+      ru: 'Гастрономические и культурные прогулки'
+    }
+  },
+  {
+    id: 'tr-4',
+    initials: 'BT',
+    name: 'Bekzod Toshmatov',
+    cityId: 'khiva',
+    cityLabel: { uz: 'Xiva', en: 'Khiva', ru: 'Хива' },
+    rating: '4.9',
+    reviews: 27,
+    experienceYears: 7,
+    pricePerHour: '$15',
+    languages: ['🇺🇿 O‘zbek', '🇷🇺 Русский', '🇬🇧 English'],
+    specialty: {
+      uz: 'Ichan Qal’a va Xorazm bo‘ylab hamrohlik',
+      en: 'Ichan Kala & Khorezm guidance',
+      ru: 'Сопровождение по Ичан-Кале и Хорезму'
+    }
+  }
+];
+
+const state = {
+  lang: AppStorage.get('lang', APP_CONFIG.defaultLang),
+  screen: 'splash',
+  sheetOpen: false,
+  sessionMode: AppStorage.get('sessionMode', 'guest'), // 'guest' | 'demo'
+  userContact: AppStorage.get('userContact', ''),
+  selectedRole: AppStorage.get('userRole', ''),
+  selectedCity: 'all',
+  searchQuery: '',
+  onbIndex: 0,
+  livePairIndex: 0,
+  translatorLangs: new Set(['uz', 'en']),
+  modalAction: null
+};
+
+if (!TRANSLATIONS[state.lang]) {
+  state.lang = APP_CONFIG.defaultLang;
+}
+
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+let livePairTimer = null;
+let toastTimer = null;
+
+function t(key, replacements = {}) {
+  const dict = TRANSLATIONS[state.lang] || TRANSLATIONS.uz;
+  let value = dict[key];
+  if (typeof value !== 'string') return value;
+  const merged = { BRAND: APP_CONFIG.brandName, ...replacements };
+  Object.keys(merged).forEach((k) => {
+    value = value.replace(new RegExp(`\\{${k}\\}`, 'g'), merged[k]);
+  });
+  return value;
+}
+
+function showToast(message) {
+  const toast = $('#appToast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.remove('is-visible');
+  void toast.offsetWidth;
+  toast.classList.add('is-visible');
+  window.clearTimeout(toastTimer);
+  toastTimer = window.setTimeout(() => {
+    toast.classList.remove('is-visible');
+  }, 2600);
+}
+
+function applyBrandIdentity() {
+  document.title = `${APP_CONFIG.brandName} — ${t('brandTag')}`;
+  $$('[data-brand-name]').forEach((el) => {
+    el.textContent = APP_CONFIG.brandName;
+  });
+  $$('[data-brand-tag]').forEach((el) => {
+    el.textContent = t('brandTag');
+  });
+}
+
+function applyTranslations() {
+  applyBrandIdentity();
+
+  $$('[data-i18n]').forEach((el) => {
+    const key = el.getAttribute('data-i18n');
+    const translated = t(key);
+    if (typeof translated === 'string') {
+      el.textContent = translated;
+    }
+  });
+
+  $$('[data-i18n-placeholder]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const translated = t(key);
+    if (typeof translated === 'string') {
+      el.setAttribute('placeholder', translated);
+    }
+  });
+
+  // Update language cards selection
+  $$('.lang-card').forEach((card) => {
+    const isSelected = card.getAttribute('data-lang') === state.lang;
+    card.classList.toggle('is-selected', isSelected);
+    card.setAttribute('aria-pressed', String(isSelected));
+  });
+
+  // Update live pair text
+  const pairs = t('livePairs');
+  const liveEl = $('#welcomeLivePairText');
+  if (liveEl && Array.isArray(pairs)) {
+    liveEl.textContent = pairs[state.livePairIndex % pairs.length];
+  }
+
+  // Update onboarding slides text
+  const slides = t('onbSlides');
+  if (Array.isArray(slides)) {
+    slides.forEach((slide, idx) => {
+      const titleEl = $(`#onbTitle${idx}`);
+      const descEl = $(`#onbDesc${idx}`);
+      if (titleEl) titleEl.textContent = slide.title;
+      if (descEl) descEl.textContent = slide.desc;
+    });
+  }
+  updateOnboardingUI();
+  updateRoleSessionBadge();
+  renderCityFilters();
+  renderTranslators();
+}
+
+function navigateTo(screenName) {
+  state.screen = screenName;
+  $$('.screen').forEach((sc) => {
+    sc.classList.toggle('is-active', sc.getAttribute('data-screen') === screenName);
+  });
+
+  if (screenName !== 'welcome' && state.sheetOpen) {
+    closeBottomSheet(false);
+  }
+}
+
+/* =========================================================
+   SPLASH -> WELCOME SEQUENCE
+   ========================================================= */
+function runSplashSequence() {
+  const splash = $('[data-screen="splash"]');
+  navigateTo('splash');
+  if (splash) {
+    window.requestAnimationFrame(() => splash.classList.add('is-loading'));
+  }
+
+  window.setTimeout(() => {
+    navigateTo('welcome');
+    startLivePairTicker();
+  }, APP_CONFIG.splashDurationMs);
+}
+
+function startLivePairTicker() {
+  window.clearInterval(livePairTimer);
+  livePairTimer = window.setInterval(() => {
+    const pairs = t('livePairs');
+    if (!Array.isArray(pairs) || !pairs.length) return;
+    state.livePairIndex = (state.livePairIndex + 1) % pairs.length;
+    const el = $('#welcomeLivePairText');
+    if (el) el.textContent = pairs[state.livePairIndex];
+  }, 3200);
+}
+
+/* =========================================================
+   ANIMATED BOTTOM SHEET (SPRING + SWIPE + ANDROID BACK)
+   ========================================================= */
+function openBottomSheet() {
+  if (state.sheetOpen) return;
+  triggerHapticLight();
+  state.sheetOpen = true;
+
+  const welcomeScreen = $('[data-screen="welcome"]');
+  const backdrop = $('#sheetBackdrop');
+  const sheet = $('#loginSheet');
+
+  if (welcomeScreen) welcomeScreen.classList.add('sheet-open');
+  if (backdrop) backdrop.classList.add('is-open');
+  if (sheet) {
+    sheet.style.transform = '';
+    sheet.classList.add('is-open');
+    sheet.setAttribute('aria-hidden', 'false');
+  }
+
+  try {
+    window.history.pushState({ sheet: true }, '');
+  } catch {
+    // ignore in restricted iframes
+  }
+}
+
+function closeBottomSheet(resetDemo = true) {
+  if (!state.sheetOpen) return;
+  state.sheetOpen = false;
+
+  const welcomeScreen = $('[data-screen="welcome"]');
+  const backdrop = $('#sheetBackdrop');
+  const sheet = $('#loginSheet');
+
+  if (welcomeScreen) welcomeScreen.classList.remove('sheet-open');
+  if (backdrop) backdrop.classList.remove('is-open');
+  if (sheet) {
+    sheet.style.transform = '';
+    sheet.classList.remove('is-open');
+    sheet.setAttribute('aria-hidden', 'true');
+  }
+
+  if (resetDemo) {
+    hideDemoAuthBox();
+  }
+}
+
+function setupSheetSwipeDismiss() {
+  const dragZone = $('#sheetDragZone');
+  const sheet = $('#loginSheet');
+  if (!dragZone || !sheet) return;
+
+  let startY = 0;
+  let currentY = 0;
+  let dragging = false;
+
+  const onStart = (y) => {
+    if (!state.sheetOpen) return;
+    dragging = true;
+    startY = y;
+    currentY = 0;
+    sheet.classList.add('is-dragging');
+  };
+
+  const onMove = (y) => {
+    if (!dragging) return;
+    const delta = Math.max(0, y - startY);
+    currentY = delta;
+    sheet.style.transform = `translate3d(0, ${delta}px, 0)`;
+  };
+
+  const onEnd = () => {
+    if (!dragging) return;
+    dragging = false;
+    sheet.classList.remove('is-dragging');
+    if (currentY > 90) {
+      closeBottomSheet();
+    } else {
+      sheet.style.transform = '';
+    }
+  };
+
+  dragZone.addEventListener('touchstart', (e) => onStart(e.touches[0].clientY), { passive: true });
+  dragZone.addEventListener('touchmove', (e) => onMove(e.touches[0].clientY), { passive: true });
+  dragZone.addEventListener('touchend', onEnd);
+
+  dragZone.addEventListener('mousedown', (e) => {
+    onStart(e.clientY);
+    const moveHandler = (ev) => onMove(ev.clientY);
+    const upHandler = () => {
+      onEnd();
+      window.removeEventListener('mousemove', moveHandler);
+      window.removeEventListener('mouseup', upHandler);
+    };
+    window.addEventListener('mousemove', moveHandler);
+    window.addEventListener('mouseup', upHandler);
+  });
+}
+
+/* =========================================================
+   CONTACT VALIDATION (INTERNATIONAL PHONE OR EMAIL)
+   ========================================================= */
+function detectContactKind(raw) {
+  const trimmed = raw.trim();
+  if (!trimmed) return 'empty';
+  if (trimmed.includes('@') || /[a-zA-Z]/.test(trimmed)) return 'email';
+  return 'phone';
+}
+
+function validateContact(raw) {
+  const trimmed = raw.trim();
+  if (!trimmed) {
+    return { valid: false, error: t('errEmpty') };
+  }
+  const kind = detectContactKind(trimmed);
+  if (kind === 'email') {
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(trimmed);
+    return emailOk ? { valid: true, kind: 'email', value: trimmed } : { valid: false, error: t('errEmail') };
+  }
+  // International phone validation: 9 to 15 digits
+  const digits = trimmed.replace(/[^\d]/g, '');
+  const hasValidChars = /^\+?[\d\s\-()]+$/.test(trimmed);
+  if (!hasValidChars || digits.length < 9 || digits.length > 15) {
+    return { valid: false, error: t('errPhone') };
+  }
+  const formatted = trimmed.startsWith('+') ? trimmed : `+${digits}`;
+  return { valid: true, kind: 'phone', value: formatted };
+}
+
+function updateInputBadge(raw) {
+  const badge = $('#inputTypeBadge');
+  if (!badge) return;
+  const kind = detectContactKind(raw);
+  if (kind === 'empty') {
+    badge.classList.remove('is-visible');
+    return;
+  }
+  badge.textContent = kind === 'email' ? t('badgeEmail') : t('badgePhone');
+  badge.classList.add('is-visible');
+}
+
+function showFieldError(msg) {
+  const input = $('#contactInput');
+  const errEl = $('#contactError');
+  if (input) input.classList.add('is-error');
+  if (errEl) {
+    errEl.textContent = msg;
+    errEl.classList.add('is-visible');
+  }
+}
+
+function clearFieldError() {
+  const input = $('#contactInput');
+  const errEl = $('#contactError');
+  if (input) input.classList.remove('is-error');
+  if (errEl) {
+    errEl.textContent = '';
+    errEl.classList.remove('is-visible');
+  }
+}
+
+function hideDemoAuthBox() {
+  const box = $('#demoAuthBox');
+  if (box) box.classList.remove('is-visible');
+}
+
+function handleLoginSubmit(event) {
+  event.preventDefault();
+  clearFieldError();
+
+  const input = $('#contactInput');
+  const btn = $('#loginSubmitBtn');
+  const result = validateContact(input ? input.value : '');
+
+  if (!result.valid) {
+    triggerHapticLight();
+    showFieldError(result.error);
+    return;
+  }
+
+  // Loading state
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = `<span class="btn-spinner" aria-hidden="true"></span><span>${t('loginLoading')}</span>`;
+  }
+
+  window.setTimeout(() => {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = t('loginBtn');
+    }
+    state.userContact = result.value;
+
+    // Transparent Demo Mode Notice (never fake SMS OTP)
+    if (!APP_CONFIG.authEndpointConnected) {
+      const box = $('#demoAuthBox');
+      if (box) {
+        box.classList.add('is-visible');
+        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+  }, 620);
+}
+
+/* =========================================================
+   ONBOARDING (3 SWIPEABLE SLIDES)
+   ========================================================= */
+function openOnboarding() {
+  state.onbIndex = 0;
+  updateOnboardingUI();
+  navigateTo('onboarding');
+}
+
+function finishOnboarding() {
+  AppStorage.set('onboardingDone', 'true');
+  navigateTo('welcome');
+}
+
+function updateOnboardingUI() {
+  const track = $('#onbTrack');
+  if (track) {
+    track.style.transform = `translate3d(-${state.onbIndex * 100}%, 0, 0)`;
+  }
+
+  $$('.onb-dot').forEach((dot, idx) => {
+    dot.classList.toggle('is-active', idx === state.onbIndex);
+  });
+
+  const backBtn = $('#onbBackBtn');
+  if (backBtn) backBtn.disabled = state.onbIndex === 0;
+
+  const nextBtn = $('#onbNextBtn');
+  if (nextBtn) {
+    nextBtn.textContent = state.onbIndex === 2 ? t('onbFinish') : t('onbNext');
+  }
+}
+
+function setupOnboardingSwipe() {
+  const viewport = $('#onbViewport');
+  if (!viewport) return;
+  let startX = 0;
+  let deltaX = 0;
+
+  viewport.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    deltaX = 0;
+  }, { passive: true });
+
+  viewport.addEventListener('touchmove', (e) => {
+    deltaX = e.touches[0].clientX - startX;
+  }, { passive: true });
+
+  viewport.addEventListener('touchend', () => {
+    if (deltaX < -45 && state.onbIndex < 2) {
+      state.onbIndex += 1;
+      updateOnboardingUI();
+    } else if (deltaX > 45 && state.onbIndex > 0) {
+      state.onbIndex -= 1;
+      updateOnboardingUI();
+    }
+  });
+}
+
+/* =========================================================
+   ROLE SELECTION
+   ========================================================= */
+function updateRoleSessionBadge() {
+  const badge = $('#roleSessionBadge');
+  if (!badge) return;
+  if (state.sessionMode === 'demo' && state.userContact) {
+    badge.textContent = `${t('roleSessionDemo')} • ${state.userContact}`;
+  } else {
+    badge.textContent = t('roleSessionGuest');
+  }
+}
+
+function selectRole(role) {
+  triggerHapticLight();
+  state.selectedRole = role;
+  AppStorage.set('userRole', role);
+  $$('.role-card').forEach((card) => {
+    const isSel = card.getAttribute('data-role') === role;
+    card.classList.toggle('is-selected', isSel);
+    card.setAttribute('aria-pressed', String(isSel));
+  });
+  const err = $('#roleError');
+  if (err) err.classList.remove('is-visible');
+}
+
+function continueFromRole() {
+  if (!state.selectedRole) {
+    const err = $('#roleError');
+    if (err) {
+      err.textContent = t('roleSelectErr');
+      err.classList.add('is-visible');
+    }
+    return;
+  }
+  triggerHapticLight();
+  if (state.selectedRole === 'tourist') {
+    navigateTo('tourist');
+  } else {
+    navigateTo('translator');
+  }
+}
+
+/* =========================================================
+   TOURIST HOME (LOCAL UZBEKISTAN TRANSLATORS)
+   ========================================================= */
+function renderCityFilters() {
+  const row = $('#cityFilterRow');
+  if (!row) return;
+  row.innerHTML = '';
+  UZ_CITIES.forEach((city) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `filter-pill${state.selectedCity === city.id ? ' is-active' : ''}`;
+    btn.textContent = city[state.lang] || city.uz;
+    btn.addEventListener('click', () => {
+      state.selectedCity = city.id;
+      renderCityFilters();
+      renderTranslators();
+    });
+    row.appendChild(btn);
+  });
+}
+
+function renderTranslators() {
+  const list = $('#translatorList');
+  const countEl = $('#translatorCount');
+  if (!list) return;
+
+  const q = state.searchQuery.trim().toLowerCase();
+  const filtered = DEMO_TRANSLATORS.filter((item) => {
+    const cityOk = state.selectedCity === 'all' || item.cityId === state.selectedCity;
+    if (!cityOk) return false;
+    if (!q) return true;
+    const hay = [
+      item.name,
+      item.cityLabel[state.lang] || item.cityLabel.uz,
+      item.specialty[state.lang] || item.specialty.uz,
+      item.languages.join(' ')
+    ].join(' ').toLowerCase();
+    return hay.includes(q);
+  });
+
+  if (countEl) {
+    countEl.textContent = t('touristFoundCount', { COUNT: String(filtered.length) });
+  }
+
+  list.innerHTML = '';
+  if (!filtered.length) {
+    const empty = document.createElement('p');
+    empty.style.cssText = 'text-align:center;color:#777;font-size:14px;padding:28px 12px;';
+    empty.textContent = t('touristEmpty');
+    list.appendChild(empty);
+    return;
+  }
+
+  filtered.forEach((tr) => {
+    const card = document.createElement('article');
+    card.className = 'translator-card';
+    const cityText = tr.cityLabel[state.lang] || tr.cityLabel.uz;
+    const specText = tr.specialty[state.lang] || tr.specialty.uz;
+
+    card.innerHTML = `
+      <div class="translator-top">
+        <div class="translator-avatar">${tr.initials}</div>
+        <div class="translator-meta">
+          <div class="translator-name-row">
+            <h3 class="translator-name">${tr.name}</h3>
+            <span class="verified-dot" aria-label="Verified">✓</span>
+          </div>
+          <p class="translator-city">${cityText} • ${t('touristExp', { Y: String(tr.experienceYears) })}</p>
+        </div>
+        <div class="translator-rating">★ ${tr.rating}</div>
+      </div>
+      <div class="translator-langs">
+        ${tr.languages.map((l) => `<span class="mini-tag">${l}</span>`).join('')}
+      </div>
+      <p style="margin:0;font-size:13px;color:#555;line-height:1.4;">${specText}</p>
+      <div class="translator-bottom">
+        <div class="translator-price">${tr.pricePerHour} <span>${t('touristPerHour')}</span></div>
+        <button type="button" class="btn-book-sm" data-book-id="${tr.id}">${t('touristBookBtn')}</button>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+
+  list.querySelectorAll('[data-book-id]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tr = DEMO_TRANSLATORS.find((x) => x.id === btn.getAttribute('data-book-id'));
+      if (!tr) return;
+      handleTranslatorRequest(tr);
+    });
+  });
+}
+
+function handleTranslatorRequest(tr) {
+  triggerHapticLight();
+  if (state.sessionMode === 'guest') {
+    openAppModal({
+      title: t('guestModalTitle'),
+      text: t('guestModalText', { NAME: tr.name }),
+      primaryLabel: t('guestModalLogin'),
+      secondaryLabel: t('guestModalClose'),
+      onPrimary: () => {
+        closeAppModal();
+        navigateTo('welcome');
+        window.setTimeout(() => openBottomSheet(), 240);
+      }
+    });
+  } else {
+    openAppModal({
+      title: t('bookModalTitle'),
+      text: t('bookModalText', { NAME: tr.name, CITY: tr.cityLabel[state.lang] || tr.cityLabel.uz }),
+      primaryLabel: t('bookModalOk'),
+      secondaryLabel: null,
+      onPrimary: () => closeAppModal()
+    });
+  }
+}
+
+/* =========================================================
+   IN-APP MODAL
+   ========================================================= */
+function openAppModal({ title, text, primaryLabel, secondaryLabel, onPrimary }) {
+  const backdrop = $('#appModalBackdrop');
+  const titleEl = $('#appModalTitle');
+  const textEl = $('#appModalText');
+  const primaryBtn = $('#appModalPrimary');
+  const secondaryBtn = $('#appModalSecondary');
+
+  if (titleEl) titleEl.textContent = title;
+  if (textEl) textEl.textContent = text;
+  if (primaryBtn) primaryBtn.textContent = primaryLabel;
+  if (secondaryBtn) {
+    if (secondaryLabel) {
+      secondaryBtn.textContent = secondaryLabel;
+      secondaryBtn.style.display = 'inline-flex';
+    } else {
+      secondaryBtn.style.display = 'none';
+    }
+  }
+  state.modalAction = onPrimary;
+  if (backdrop) backdrop.classList.add('is-open');
+}
+
+function closeAppModal() {
+  const backdrop = $('#appModalBackdrop');
+  if (backdrop) backdrop.classList.remove('is-open');
+  state.modalAction = null;
+}
+
+/* =========================================================
+   ANDROID BACK BUTTON HANDLER
+   ========================================================= */
+function handleHardwareBack() {
+  const modalBackdrop = $('#appModalBackdrop');
+  if (modalBackdrop && modalBackdrop.classList.contains('is-open')) {
+    closeAppModal();
+    return true;
+  }
+  if (state.sheetOpen) {
+    closeBottomSheet();
+    return true;
+  }
+  if (state.screen === 'tourist' || state.screen === 'translator') {
+    navigateTo('role');
+    return true;
+  }
+  if (state.screen === 'role' || state.screen === 'onboarding') {
+    navigateTo('welcome');
+    return true;
+  }
+  return false;
+}
+
+/* =========================================================
+   EVENT BINDING & BOOTSTRAP
+   ========================================================= */
+function bindEvents() {
+  // Start Capsule CTA with tactile press animation
+  const startBtn = $('#startCapsuleBtn');
+  if (startBtn) {
+    startBtn.addEventListener('click', () => {
+      startBtn.classList.add('is-pressed');
+      window.setTimeout(() => {
+        startBtn.classList.remove('is-pressed');
+        openBottomSheet();
+      }, 130);
+    });
+  }
+
+  // Welcome -> Onboarding tour
+  const guideBtn = $('#welcomeGuideBtn');
+  if (guideBtn) {
+    guideBtn.addEventListener('click', () => {
+      triggerHapticLight();
+      openOnboarding();
+    });
+  }
+
+  // Close Bottom Sheet
+  $('#sheetCloseBtn')?.addEventListener('click', () => closeBottomSheet());
+  $('#sheetBackdrop')?.addEventListener('click', () => closeBottomSheet());
+  setupSheetSwipeDismiss();
+
+  // Language Cards inside Bottom Sheet
+  $$('.lang-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const nextLang = card.getAttribute('data-lang');
+      if (!nextLang || !TRANSLATIONS[nextLang]) return;
+      triggerHapticLight();
+      state.lang = nextLang;
+      AppStorage.set('lang', nextLang);
+      applyTranslations();
+      showToast(t('toastLangChanged'));
+    });
+  });
+
+  // Contact Input
+  const contactInput = $('#contactInput');
+  if (contactInput) {
+    contactInput.addEventListener('input', (e) => {
+      clearFieldError();
+      hideDemoAuthBox();
+      updateInputBadge(e.target.value);
+    });
+  }
+
+  // Login Form
+  $('#loginForm')?.addEventListener('submit', handleLoginSubmit);
+
+  // Demo Auth Confirm / Cancel
+  $('#demoConfirmBtn')?.addEventListener('click', () => {
+    triggerHapticLight();
+    state.sessionMode = 'demo';
+    AppStorage.set('sessionMode', 'demo');
+    AppStorage.set('userContact', state.userContact);
+    updateRoleSessionBadge();
+    closeBottomSheet();
+    navigateTo('role');
+  });
+
+  $('#demoCancelBtn')?.addEventListener('click', () => {
+    hideDemoAuthBox();
+  });
+
+  // Continue as Guest
+  $('#guestContinueBtn')?.addEventListener('click', () => {
+    triggerHapticLight();
+    state.sessionMode = 'guest';
+    state.userContact = '';
+    AppStorage.set('sessionMode', 'guest');
+    updateRoleSessionBadge();
+    closeBottomSheet();
+    navigateTo('role');
+  });
+
+  // Onboarding Controls
+  $('#onbSkipBtn')?.addEventListener('click', finishOnboarding);
+  $('#onbBackBtn')?.addEventListener('click', () => {
+    if (state.onbIndex > 0) {
+      state.onbIndex -= 1;
+      updateOnboardingUI();
+    }
+  });
+  $('#onbNextBtn')?.addEventListener('click', () => {
+    if (state.onbIndex < 2) {
+      state.onbIndex += 1;
+      updateOnboardingUI();
+    } else {
+      finishOnboarding();
+    }
+  });
+  $$('.onb-dot').forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      state.onbIndex = idx;
+      updateOnboardingUI();
+    });
+  });
+  setupOnboardingSwipe();
+
+  // Role Selection
+  $$('.role-card').forEach((card) => {
+    card.addEventListener('click', () => selectRole(card.getAttribute('data-role')));
+  });
+  $('#roleBackBtn')?.addEventListener('click', () => navigateTo('welcome'));
+  $('#roleContinueBtn')?.addEventListener('click', continueFromRole);
+
+  // Tourist Home
+  $('#touristSearchInput')?.addEventListener('input', (e) => {
+    state.searchQuery = e.target.value;
+    renderTranslators();
+  });
+  $('#touristSwitchRoleBtn')?.addEventListener('click', () => navigateTo('role'));
+  $('#touristBackWelcomeBtn')?.addEventListener('click', () => navigateTo('welcome'));
+
+  // Translator Profile Setup
+  $('#translatorBackRoleBtn')?.addEventListener('click', () => navigateTo('role'));
+  $$('.select-chip[data-tr-lang]').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const code = chip.getAttribute('data-tr-lang');
+      if (state.translatorLangs.has(code)) {
+        state.translatorLangs.delete(code);
+        chip.classList.remove('is-selected');
+      } else {
+        state.translatorLangs.add(code);
+        chip.classList.add('is-selected');
+      }
+    });
+  });
+
+  $('#translatorSetupForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nameInput = $('#trNameInput');
+    const errEl = $('#trFormError');
+    const nameVal = nameInput ? nameInput.value.trim() : '';
+
+    if (!nameVal || state.translatorLangs.size === 0) {
+      if (errEl) {
+        errEl.textContent = t('trValidationErr');
+        errEl.classList.add('is-visible');
+      }
+      return;
+    }
+    if (errEl) errEl.classList.remove('is-visible');
+    triggerHapticLight();
+    showToast(t('trSavedToast'));
+  });
+
+  // Modal Controls
+  $('#appModalPrimary')?.addEventListener('click', () => {
+    if (typeof state.modalAction === 'function') state.modalAction();
+  });
+  $('#appModalSecondary')?.addEventListener('click', closeAppModal);
+  $('#appModalBackdrop')?.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeAppModal();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  applyTranslations();
+  bindEvents();
+  initAndroidBridge(handleHardwareBack);
+  runSplashSequence();
+});
+})();
+  </script>
+</body>
+</html>
